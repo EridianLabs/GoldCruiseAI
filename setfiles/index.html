@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Files - GoldCruiseAI</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .setfiles-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+        .setfiles-hero h1 {
+            font-size: var(--font-size-3xl);
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-sm);
+        }
+        .setfiles-hero p {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-light);
+        }
+        .setfile-card {
+            background: var(--color-bg-card);
+            border: 2px solid rgba(184, 167, 105, 0.2);
+            border-radius: 15px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition-normal);
+        }
+        .setfile-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(184, 167, 105, 0.2);
+        }
+        .setfile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+        .setfile-name {
+            font-size: var(--font-size-xl);
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+        .setfile-badge {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .badge-recommended {
+            background: rgba(184, 167, 105, 0.3);
+            color: var(--color-gold);
+        }
+        .badge-conservative {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+        .badge-aggressive {
+            background: rgba(255, 193, 7, 0.2);
+            color: #FFC107;
+        }
+        .setfile-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .detail-item {
+            padding: var(--spacing-sm);
+            background: rgba(184, 167, 105, 0.05);
+            border-radius: 8px;
+        }
+        .detail-label {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-xs);
+        }
+        .detail-value {
+            font-size: var(--font-size-lg);
+            color: var(--color-gold);
+            font-weight: 600;
+        }
+        .setfile-description {
+            color: var(--color-text);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+        .setfile-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        .btn-download {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+            color: var(--color-primary-dark);
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-normal);
+            display: inline-block;
+        }
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(184, 167, 105, 0.4);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-lg) 0;
+            background: var(--color-bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--spacing-sm);
+            text-align: left;
+            border-bottom: 1px solid rgba(184, 167, 105, 0.1);
+        }
+        .comparison-table th {
+            background: rgba(184, 167, 105, 0.1);
+            color: var(--color-gold);
+            font-weight: 600;
+        }
+        .comparison-table tr:hover {
+            background: rgba(184, 167, 105, 0.05);
+        }
+        .instructions {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(184, 167, 105, 0.2);
+            border-radius: 15px;
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+        .instructions h3 {
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-md);
+        }
+        .instructions ol {
+            margin-left: var(--spacing-md);
+            color: var(--color-text);
+        }
+        .instructions li {
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../duplicate-reference-image.svg" alt="GoldCruiseAI" class="logo">
+                    <span class="brand-text">GoldCruiseAI</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html#features">Features</a></li>
+                <li><a href="../index.html#performance">Performance</a></li>
+                <li><a href="../docs/">Documentation</a></li>
+                <li><a href="index.html" class="active">Set Files</a></li>
+                <li><a href="../docs/support.html">Support</a></li>
+                <li><a href="https://www.mql5.com/en/market/product/158880" class="btn-primary" target="_blank">Buy Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="setfiles-hero">
+        <div class="container">
+            <h1>📦 Risk Profile Set Files</h1>
+            <p>Pre-configured risk profiles for different trading styles and account sizes</p>
+        </div>
+    </section>
+
+    <!-- Set Files -->
+    <section class="container" style="padding: var(--spacing-xl) 0;">
+        <!-- Moderate (Recommended) -->
+        <div class="setfile-card">
+            <div class="setfile-header">
+                <div class="setfile-name">Moderate.set ⭐</div>
+                <span class="setfile-badge badge-recommended">RECOMMENDED</span>
+            </div>
+            <div class="setfile-details">
+                <div class="detail-item">
+                    <div class="detail-label">Risk per Trade</div>
+                    <div class="detail-value">1.0%</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Lot Size</div>
+                    <div class="detail-value">Adaptive</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Max Drawdown</div>
+                    <div class="detail-value">5.0%</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Max Trades/Day</div>
+                    <div class="detail-value">10</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">SL Multiplier</div>
+                    <div class="detail-value">2.0</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">TP Multiplier</div>
+                    <div class="detail-value">4.0</div>
+                </div>
+            </div>
+            <div class="setfile-description">
+                <strong>Best For:</strong> Most traders with medium accounts ($1,000-$5,000). This is the recommended configuration with proven performance: 166 pips profit, 93.78% win rate in backtesting. Balanced risk/reward ratio with adaptive position sizing.
+            </div>
+            <div class="setfile-actions">
+                <a href="GoldAITrader_Moderate.set" class="btn-download" download>Download Moderate.set</a>
+            </div>
+        </div>
+
+        <!-- Conservative -->
+        <div class="setfile-card">
+            <div class="setfile-header">
+                <div class="setfile-name">Conservative.set</div>
+                <span class="setfile-badge badge-conservative">LOW RISK</span>
+            </div>
+            <div class="setfile-details">
+                <div class="detail-item">
+                    <div class="detail-label">Risk per Trade</div>
+                    <div class="detail-value">0.5%</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Lot Size</div>
+                    <div class="detail-value">Fixed 0.01</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Max Drawdown</div>
+                    <div class="detail-value">3.0%</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Max Trades/Day</div>
+                    <div class="detail-value">8</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">SL Multiplier</div>
+                    <div class="detail-value">1.75</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Confidence</div>
+                    <div class="detail-value">0.55/0.35</div>
+                </div>
+            </div>
+            <div class="setfile-description">
+                <strong>Best For:</strong> Beginners, small accounts ($500-$2,000), risk-averse traders. Very safe configuration with tighter stops and higher confidence thresholds. Fixed 0.01 lot size for consistent position sizing.
+            </div>
+            <div class="setfile-actions">
+                <a href="GoldAITrader_Conservative.set" class="btn-download" download>Download Conservative.set</a>
+            </div>
+        </div>
+
+        <!-- Aggressive -->
+        <div class="setfile-card">
+            <div class="setfile-header">
+                <div class="setfile-name">Aggressive.set</div>
+                <span class="setfile-badge badge-aggressive">HIGH RISK</span>
+            </div>
+            <div class="setfile-details">
+                <div class="detail-item">
+                    <div class="detail-label">Risk per Trade</div>
+                    <div class="detail-value">2.0%</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Lot Size</div>
+                    <div class="detail-value">Adaptive</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Max Drawdown</div>
+                    <div class="detail-value">7.0%</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Max Trades/Day</div>
+                    <div class="detail-value">15</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">SL Multiplier</div>
+                    <div class="detail-value">2.0</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Confidence</div>
+                    <div class="detail-value">0.5/0.30</div>
+                </div>
+            </div>
+            <div class="setfile-description">
+                <strong>Best For:</strong> Experienced traders with larger accounts ($5,000+). Higher risk for higher returns. More trades per day with lower confidence thresholds. Warning: Higher drawdowns and more volatility expected.
+            </div>
+            <div class="setfile-actions">
+                <a href="GoldAITrader_Aggressive.set" class="btn-download" download>Download Aggressive.set</a>
+            </div>
+        </div>
+
+        <!-- Fixed Lot -->
+        <div class="setfile-card">
+            <div class="setfile-header">
+                <div class="setfile-name">FixedLot_0.01.set</div>
+                <span class="setfile-badge badge-conservative">FIXED SIZE</span>
+            </div>
+            <div class="setfile-details">
+                <div class="detail-item">
+                    <div class="detail-label">Lot Size</div>
+                    <div class="detail-value">Fixed 0.01</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Risk per Trade</div>
+                    <div class="detail-value">~0.03-0.05%</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">SL Multiplier</div>
+                    <div class="detail-value">2.0</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">TP Multiplier</div>
+                    <div class="detail-value">4.0</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Max Drawdown</div>
+                    <div class="detail-value">5.0%</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Max Trades/Day</div>
+                    <div class="detail-value">10</div>
+                </div>
+            </div>
+            <div class="setfile-description">
+                <strong>Best For:</strong> Small accounts ($1,000), traders wanting consistent position sizing. Risk per trade varies with SL distance (~$0.30-$0.50 per trade). Very safe for small accounts.
+            </div>
+            <div class="setfile-actions">
+                <a href="GoldAITrader_FixedLot_0.01.set" class="btn-download" download>Download FixedLot_0.01.set</a>
+            </div>
+        </div>
+
+        <!-- Max Profit Variants -->
+        <div class="setfile-card">
+            <div class="setfile-header">
+                <div class="setfile-name">Maximum Profit Set Files</div>
+                <span class="setfile-badge badge-aggressive">MAX PROFIT</span>
+            </div>
+            <div class="setfile-description">
+                <p>Three additional set files optimized for maximum profit potential:</p>
+                <ul style="margin-left: var(--spacing-md); color: var(--color-text); line-height: 1.8;">
+                    <li><strong>MaxProfit_2Percent.set</strong> - 2% risk per trade, 2x profit multiplier</li>
+                    <li><strong>MaxProfit_3Percent.set</strong> - 3% risk per trade, 3x profit multiplier</li>
+                    <li><strong>MaxProfit_Extreme.set</strong> - Maximum risk configuration for experienced traders</li>
+                </ul>
+                <p style="margin-top: var(--spacing-sm);"><strong>Warning:</strong> These configurations are for experienced traders only. Higher risk = higher potential returns but also higher potential losses.</p>
+            </div>
+            <div class="setfile-actions">
+                <a href="GoldAITrader_MaxProfit_2Percent.set" class="btn-download" download>Download MaxProfit_2Percent.set</a>
+                <a href="GoldAITrader_MaxProfit_3Percent.set" class="btn-download" download>Download MaxProfit_3Percent.set</a>
+                <a href="GoldAITrader_MaxProfit_Extreme.set" class="btn-download" download>Download MaxProfit_Extreme.set</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="container" style="padding: 0 var(--spacing-md) var(--spacing-xl);">
+        <h2 class="section-title">📊 Risk Profile Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Profile</th>
+                    <th>Risk/Trade</th>
+                    <th>Lot Size</th>
+                    <th>Max DD</th>
+                    <th>Trades/Day</th>
+                    <th>Best For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Conservative</strong></td>
+                    <td>0.5%</td>
+                    <td>Fixed 0.01</td>
+                    <td>3.0%</td>
+                    <td>8</td>
+                    <td>Beginners</td>
+                </tr>
+                <tr>
+                    <td><strong>Moderate ⭐</strong></td>
+                    <td>1.0%</td>
+                    <td>Adaptive</td>
+                    <td>5.0%</td>
+                    <td>10</td>
+                    <td>Most traders</td>
+                </tr>
+                <tr>
+                    <td><strong>Aggressive</strong></td>
+                    <td>2.0%</td>
+                    <td>Adaptive</td>
+                    <td>7.0%</td>
+                    <td>15</td>
+                    <td>Experienced</td>
+                </tr>
+                <tr>
+                    <td><strong>Fixed 0.01</strong></td>
+                    <td>~0.03-0.05%</td>
+                    <td>Fixed 0.01</td>
+                    <td>5.0%</td>
+                    <td>10</td>
+                    <td>Small accounts</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Instructions -->
+    <section class="container" style="padding: 0 var(--spacing-md) var(--spacing-xl);">
+        <div class="instructions">
+            <h3>📥 How to Use Set Files</h3>
+            <ol>
+                <li><strong>Download:</strong> Click the download button for your desired set file</li>
+                <li><strong>Save:</strong> Save the file to an accessible location (e.g., Desktop or Documents)</li>
+                <li><strong>Load in MT5:</strong>
+                    <ul style="margin-top: var(--spacing-xs); margin-left: var(--spacing-md);">
+                        <li>Open MetaTrader 5</li>
+                        <li>Attach GoldCruiseAI to XAUUSD M15 chart</li>
+                        <li>Click on EA → Right-click → Properties (or double-click EA)</li>
+                        <li>Click the <strong>"Load"</strong> button in the Inputs tab</li>
+                        <li>Select your downloaded .set file</li>
+                        <li>Click OK</li>
+                    </ul>
+                </li>
+                <li><strong>Verify:</strong> Check that all parameters have loaded correctly</li>
+                <li><strong>Enable:</strong> Make sure AutoTrading is enabled (green button)</li>
+            </ol>
+            <p style="margin-top: var(--spacing-md); color: var(--color-text-light);">
+                <strong>Alternative Method:</strong> You can also load set files in Strategy Tester by clicking "Load" next to the Inputs section.
+            </p>
+        </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section class="container" style="padding: 0 var(--spacing-md) var(--spacing-xl);">
+        <div class="instructions">
+            <h3>💡 Recommendations by Account Size</h3>
+            <div style="color: var(--color-text); line-height: 1.8;">
+                <p><strong>For $500-$1,000 Account:</strong></p>
+                <ul style="margin-left: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <li>Conservative.set or FixedLot_0.01.set</li>
+                    <li>Very safe, low risk per trade</li>
+                </ul>
+                
+                <p><strong>For $1,000-$5,000 Account:</strong></p>
+                <ul style="margin-left: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <li>Moderate.set ⭐ <strong>RECOMMENDED</strong></li>
+                    <li>Balanced risk/reward</li>
+                    <li>Proven configuration</li>
+                </ul>
+                
+                <p><strong>For $5,000+ Account:</strong></p>
+                <ul style="margin-left: var(--spacing-md);">
+                    <li>Moderate.set or Aggressive.set</li>
+                    <li>Depends on your risk tolerance</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GoldCruiseAI</h3>
+                    <p>Premium AI-Enhanced Gold Trading Expert Advisor</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="../docs/quick-start.html">Quick Start</a></li>
+                        <li><a href="../docs/parameters.html">Parameters</a></li>
+                        <li><a href="../docs/performance.html">Performance</a></li>
+                        <li><a href="../docs/support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="index.html">Set Files</a></li>
+                        <li><a href="../docs/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Purchase</h4>
+                    <ul>
+                        <li><a href="https://www.mql5.com/en/market/product/158880" target="_blank">Buy on MQL5</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EridianLabs. All rights reserved.</p>
+                <p class="footer-warning">⚠️ Trading involves risk. Past performance does not guarantee future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & FAQ - GoldCruiseAI</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(184, 167, 105, 0.2);
+            border-radius: 10px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition-normal);
+        }
+        .faq-item:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 5px 15px rgba(184, 167, 105, 0.1);
+        }
+        .faq-question {
+            font-size: var(--font-size-lg);
+            color: var(--color-gold);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: var(--font-size-xl);
+            color: var(--color-gold);
+            transition: var(--transition-fast);
+        }
+        .faq-item.active .faq-question::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            color: var(--color-text);
+            line-height: 1.8;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding-top: var(--spacing-sm);
+        }
+        .support-section {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(184, 167, 105, 0.2);
+            border-radius: 15px;
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+        .support-section h3 {
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-md);
+        }
+        .support-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .support-link-card {
+            padding: var(--spacing-md);
+            background: rgba(184, 167, 105, 0.05);
+            border: 1px solid rgba(184, 167, 105, 0.2);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: var(--transition-normal);
+        }
+        .support-link-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(184, 167, 105, 0.2);
+        }
+        .support-link-card h4 {
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-xs);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../duplicate-reference-image.svg" alt="GoldCruiseAI" class="logo">
+                    <span class="brand-text">GoldCruiseAI</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html#features">Features</a></li>
+                <li><a href="../index.html#performance">Performance</a></li>
+                <li><a href="../docs/">Documentation</a></li>
+                <li><a href="../setfiles/">Set Files</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
+                <li><a href="https://www.mql5.com/en/market/product/158880" class="btn-primary" target="_blank">Buy Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="min-height: 50vh;">
+        <div class="container">
+            <h1 class="hero-title">Support & FAQ</h1>
+            <p class="hero-subtitle">Get help with GoldCruiseAI</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container" style="padding: var(--spacing-xl) 0;">
+        <div class="faq-container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">What is the minimum account size?</div>
+                <div class="faq-answer">
+                    We recommend a minimum account size of $500. However, you can start with smaller accounts using the FixedLot_0.01.set configuration. For best results, use at least $1,000 with the Moderate.set profile.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Which risk profile should I use?</div>
+                <div class="faq-answer">
+                    <ul style="margin-left: var(--spacing-md); line-height: 1.8;">
+                        <li><strong>Beginners / Small accounts ($500-$2,000):</strong> Conservative.set or FixedLot_0.01.set</li>
+                        <li><strong>Most traders ($1,000-$5,000):</strong> Moderate.set ⭐ (Recommended)</li>
+                        <li><strong>Experienced traders ($5,000+):</strong> Moderate.set or Aggressive.set</li>
+                    </ul>
+                    Always start with a demo account to test the configuration before going live.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why isn't the EA trading?</div>
+                <div class="faq-answer">
+                    Check these common issues:
+                    <ul style="margin-left: var(--spacing-md); line-height: 1.8; margin-top: var(--spacing-sm);">
+                        <li>AutoTrading button must be enabled (green)</li>
+                        <li>Chart must be XAUUSD on M15 timeframe</li>
+                        <li>Check that InpEnableTrading = true in EA inputs</li>
+                        <li>Verify you have sufficient margin</li>
+                        <li>Check if max daily drawdown limit reached</li>
+                        <li>Review Journal tab for error messages</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I use this EA on other symbols?</div>
+                <div class="faq-answer">
+                    GoldCruiseAI is specifically optimized for XAUUSD (Gold) on M15 timeframe. While it may work on other symbols, we strongly recommend using it only on XAUUSD as it has been tested and optimized exclusively for gold trading.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is the win rate?</div>
+                <div class="faq-answer">
+                    Based on 25 years of backtesting (2000-2025), GoldCruiseAI achieved a <strong>93.93% win rate</strong> with 626 total trades. However, past performance does not guarantee future results. Actual results may vary based on market conditions, broker, and account settings.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I load a set file?</div>
+                <div class="faq-answer">
+                    <ol style="margin-left: var(--spacing-md); line-height: 1.8;">
+                        <li>Download the desired .set file from the Set Files page</li>
+                        <li>Attach GoldCruiseAI to XAUUSD M15 chart</li>
+                        <li>Right-click EA → Properties (or double-click EA)</li>
+                        <li>Click the "Load" button in the Inputs tab</li>
+                        <li>Select your downloaded .set file</li>
+                        <li>Click OK</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is there a monthly fee?</div>
+                <div class="faq-answer">
+                    No! GoldCruiseAI is a one-time purchase. There are no monthly fees, no subscription costs, and no hidden charges. You pay once and own it forever, including all future updates.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do I need an internet connection?</div>
+                <div class="faq-answer">
+                    No, GoldCruiseAI works completely offline. It doesn't require any API keys, external services, or internet connection. Once installed, it runs independently on your MetaTrader 5 platform.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I modify the parameters?</div>
+                <div class="faq-answer">
+                    Yes, you can modify all parameters to suit your trading style. However, we recommend:
+                    <ul style="margin-left: var(--spacing-md); line-height: 1.8; margin-top: var(--spacing-sm);">
+                        <li>Start with the provided set files</li>
+                        <li>Test any changes on a demo account first</li>
+                        <li>Use Strategy Tester to validate changes</li>
+                        <li>Document your modifications</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What if I'm not satisfied?</div>
+                <div class="faq-answer">
+                    We offer a 1-month rental option ($99) so you can try GoldCruiseAI before committing to the full purchase ($599). If you're not satisfied with the rental, you're not obligated to purchase. For full purchases, please contact MQL5 support for their refund policy.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How often does it trade?</div>
+                <div class="faq-answer">
+                    GoldCruiseAI focuses on quality over quantity. It typically makes 8-15 trades per day depending on your risk profile and market conditions. The EA only trades when multiple conditions align, ensuring high-probability setups. This is why it achieves such a high win rate.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is it safe for beginners?</div>
+                <div class="faq-answer">
+                    Yes! GoldCruiseAI is suitable for all experience levels. Beginners should use the Conservative.set or FixedLot_0.01.set profiles, which have very low risk per trade. Always start with a demo account to learn how the EA works before trading live.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Resources -->
+    <section class="container" style="padding: 0 var(--spacing-md) var(--spacing-xl);">
+        <div class="support-section">
+            <h3>📚 Documentation & Resources</h3>
+            <div class="support-links">
+                <a href="quick-start.html" class="support-link-card">
+                    <h4>🚀 Quick Start Guide</h4>
+                    <p>Get started with GoldCruiseAI in minutes</p>
+                </a>
+                <a href="parameters.html" class="support-link-card">
+                    <h4>⚙️ Parameter Guide</h4>
+                    <p>Complete guide to all EA parameters</p>
+                </a>
+                <a href="performance.html" class="support-link-card">
+                    <h4>📊 Performance Data</h4>
+                    <p>Detailed backtest results and metrics</p>
+                </a>
+                <a href="../setfiles/" class="support-link-card">
+                    <h4>📦 Set Files</h4>
+                    <p>Download pre-configured risk profiles</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h3>💬 Contact & Support</h3>
+            <div style="color: var(--color-text); line-height: 1.8;">
+                <p><strong>MQL5 Marketplace:</strong></p>
+                <p>For purchase, technical support, or questions, please contact us through the MQL5 Marketplace:</p>
+                <p style="margin-top: var(--spacing-sm);">
+                    <a href="https://www.mql5.com/en/market/product/158880" class="btn btn-primary" target="_blank" style="display: inline-block; margin-top: var(--spacing-sm);">
+                        Visit MQL5 Product Page
+                    </a>
+                </p>
+                
+                <p style="margin-top: var(--spacing-lg);"><strong>GitHub:</strong></p>
+                <p>For documentation, set files, and updates:</p>
+                <p style="margin-top: var(--spacing-sm);">
+                    <a href="https://github.com/EridianLabs/GoldCruiseAI" class="btn btn-secondary" target="_blank" style="display: inline-block; margin-top: var(--spacing-sm);">
+                        Visit GitHub Repository
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h3>⚠️ Important Disclaimers</h3>
+            <div style="color: var(--color-text); line-height: 1.8;">
+                <ul style="margin-left: var(--spacing-md);">
+                    <li><strong>Trading involves substantial risk of loss.</strong> Only trade with money you can afford to lose.</li>
+                    <li><strong>Past performance does not guarantee future results.</strong> Backtest results are for reference only.</li>
+                    <li><strong>Always test on demo account first</strong> before trading with real money.</li>
+                    <li><strong>Results may vary</strong> based on broker, spread, execution, and market conditions.</li>
+                    <li><strong>Use proper risk management</strong> and never risk more than you can afford to lose.</li>
+                    <li><strong>Monitor your account regularly</strong> and adjust settings as needed.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GoldCruiseAI</h3>
+                    <p>Premium AI-Enhanced Gold Trading Expert Advisor</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="quick-start.html">Quick Start</a></li>
+                        <li><a href="parameters.html">Parameters</a></li>
+                        <li><a href="performance.html">Performance</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../setfiles/">Set Files</a></li>
+                        <li><a href="support.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Purchase</h4>
+                    <ul>
+                        <li><a href="https://www.mql5.com/en/market/product/158880" target="_blank">Buy on MQL5</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EridianLabs. All rights reserved.</p>
+                <p class="footer-warning">⚠️ Trading involves risk. Past performance does not guarantee future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

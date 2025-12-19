@@ -1,0 +1,49 @@
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+logs/
+GoldAI_Logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Build files
+build/
+dist/
+*.ex5
+*.ex4
+
+# Node modules (if using any build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment files
+.env
+.env.local
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Backup files
+*.orig
+*.rej
+

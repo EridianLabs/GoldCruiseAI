@@ -1,0 +1,82 @@
+; GoldAITrader - Maximum Profit Strategy (3% Risk) - RECOMMENDED
+; Recommended for: Experienced traders wanting 3x profit with high win rate (92.94%)
+; Risk Level: High (3.0% per trade)
+; Expected: ~$1,500-2,000 per year (3x current), 10-12% max drawdown
+; WARNING: High risk - only use if you can handle 10-15% drawdowns!
+; Best for leveraging the exceptional 92.94% win rate
+
+;=== Trading Settings ===
+InpEnableTrading=true
+InpTimeframe=15
+InpOnlyOnePosition=true
+
+;=== Trend Filter Settings ===
+InpFastEMAPeriod=21
+InpSlowEMAPeriod=50
+InpTrendEMAPeriod=200
+InpUseHigherTimeframe=true
+InpHigherTimeframe=16388
+
+;=== Momentum Filter Settings ===
+InpRSIPeriod=14
+InpCCIPeriod=14
+InpMomentumPeriod=10
+InpRSIOversold=30.0
+InpRSIOverbought=70.0
+
+;=== Volatility Filter Settings ===
+InpATRPeriod=14
+InpMinVolatility=0.0
+InpMaxVolatility=0.0
+
+;=== Risk Management ===
+InpRiskPercent=3.0
+InpUseFixedLot=false
+InpFixedLotSize=0.01
+InpATRMultiplierSL=2.0
+InpATRMultiplierTP=4.0
+InpMaxDailyDrawdown=10.0
+InpMaxTradesPerDay=15
+InpMaxLossStreak=7
+InpUseConfidenceBasedSizing=true
+InpMinConfidenceForSizing=0.5
+InpMaxConfidenceMultiplier=3.0
+
+;=== Break-Even & Trailing ===
+InpEnableBreakEven=true
+InpBreakEvenTriggerPips=20.0
+InpBreakEvenPips=10.0
+InpEnableTrailingStop=true
+InpTrailingStopPips=30.0
+InpTrailingStepPips=10.0
+InpEnablePartialProfit=false
+InpPartialProfit1Percent=50.0
+InpPartialProfit1Multiplier=2.0
+InpPartialProfit2Percent=30.0
+InpPartialProfit2Multiplier=4.0
+InpUseTrailingTP=true
+
+;=== Session Filter ===
+InpEnableLondonSession=true
+InpEnableNewYorkSession=true
+InpEnableAsianSession=false
+InpAvoidRollover=true
+
+;=== News Filter ===
+InpEnableNewsFilter=false
+InpNewsAvoidMinutesBefore=30
+InpNewsAvoidMinutesAfter=30
+
+;=== AI Confidence Engine ===
+InpMinConfidence=0.5
+InpMinConfidenceShort=0.32
+InpConfidenceAgreementWeight=0.3
+InpConfidenceStrengthWeight=0.3
+InpConfidenceVolatilityWeight=0.2
+InpConfidenceTrendWeight=0.2
+InpRelaxHTFFilterForShorts=true
+
+;=== Logging ===
+InpEnableFileLogging=true
+InpEnableConsoleLogging=true
+

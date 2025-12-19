@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide - GoldCruiseAI</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .guide-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .guide-section {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(184, 167, 105, 0.2);
+            border-radius: 15px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        .guide-section h2 {
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-2xl);
+        }
+        .guide-section h3 {
+            color: var(--color-gold-light);
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+        .guide-section ol,
+        .guide-section ul {
+            margin-left: var(--spacing-md);
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+        .guide-section li {
+            margin-bottom: var(--spacing-xs);
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li::before {
+            content: '☐ ';
+            color: var(--color-gold);
+            font-weight: bold;
+            margin-right: var(--spacing-xs);
+        }
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border: 2px solid rgba(255, 193, 7, 0.3);
+            border-radius: 10px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .warning-box h4 {
+            color: #FFC107;
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../duplicate-reference-image.svg" alt="GoldCruiseAI" class="logo">
+                    <span class="brand-text">GoldCruiseAI</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html#features">Features</a></li>
+                <li><a href="../index.html#performance">Performance</a></li>
+                <li><a href="index.html">Documentation</a></li>
+                <li><a href="../setfiles/">Set Files</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="https://www.mql5.com/en/market/product/158880" class="btn-primary" target="_blank">Buy Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="min-height: 40vh;">
+        <div class="container">
+            <h1 class="hero-title">🚀 Quick Start Guide</h1>
+            <p class="hero-subtitle">Get started with GoldCruiseAI in just a few minutes</p>
+        </div>
+    </section>
+
+    <!-- Guide Content -->
+    <section class="container" style="padding: var(--spacing-xl) 0;">
+        <div class="guide-content">
+            <!-- Prerequisites -->
+            <div class="guide-section">
+                <h2>📋 Prerequisites</h2>
+                <p>Before you begin, make sure you have:</p>
+                <ul>
+                    <li>✅ MetaTrader 5 installed</li>
+                    <li>✅ A demo or live trading account</li>
+                    <li>✅ GoldCruiseAI.ex5 file (purchased from MQL5)</li>
+                    <li>✅ At least $500 recommended account balance</li>
+                </ul>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="guide-section">
+                <h2>🎯 Step 1: Purchase & Download</h2>
+                <ol>
+                    <li><strong>Purchase GoldCruiseAI:</strong>
+                        <ul>
+                            <li>Visit: <a href="https://www.mql5.com/en/market/product/158880" target="_blank" style="color: var(--color-gold);">MQL5 Marketplace</a></li>
+                            <li>Choose: Unlimited ($599) or 1 Month Rent ($99)</li>
+                            <li>Complete purchase</li>
+                        </ul>
+                    </li>
+                    <li><strong>Download the EA:</strong>
+                        <ul>
+                            <li>After purchase, the EA will be available in your MQL5 account</li>
+                            <li>Download <code>GoldCruiseAI.ex5</code> file</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="guide-section">
+                <h2>📥 Step 2: Install the EA</h2>
+                <h3>Method 1: Automatic Installation (Recommended)</h3>
+                <ol>
+                    <li>Open MetaTrader 5</li>
+                    <li>Go to <strong>Tools → Options → Expert Advisors</strong></li>
+                    <li>Enable <strong>"Allow automated trading"</strong></li>
+                    <li>Enable <strong>"Allow DLL imports"</strong> (if needed)</li>
+                    <li>Go to <strong>View → Navigator</strong> (Ctrl+N)</li>
+                    <li>Find <strong>GoldCruiseAI</strong> in Expert Advisors</li>
+                    <li>Drag and drop onto XAUUSD M15 chart</li>
+                </ol>
+                <h3>Method 2: Manual Installation</h3>
+                <ol>
+                    <li>Open MetaTrader 5</li>
+                    <li>Go to <strong>File → Open Data Folder</strong></li>
+                    <li>Navigate to <code>MQL5 → Experts</code></li>
+                    <li>Copy <code>GoldCruiseAI.ex5</code> to this folder</li>
+                    <li>Restart MetaTrader 5</li>
+                    <li>The EA will appear in Navigator under Expert Advisors</li>
+                </ol>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="guide-section">
+                <h2>⚙️ Step 3: Configure the EA</h2>
+                <h3>Basic Setup:</h3>
+                <ol>
+                    <li><strong>Attach EA to Chart:</strong>
+                        <ul>
+                            <li>Open XAUUSD chart</li>
+                            <li>Set timeframe to <strong>M15</strong> (15 minutes)</li>
+                            <li>Drag GoldCruiseAI from Navigator onto chart</li>
+                        </ul>
+                    </li>
+                    <li><strong>Load Risk Profile:</strong>
+                        <ul>
+                            <li>Click <strong>"Inputs"</strong> tab in EA settings</li>
+                            <li>Click <strong>"Load"</strong> button</li>
+                            <li>Select a set file from <a href="../setfiles/" style="color: var(--color-gold);">Set Files page</a></li>
+                            <li>Recommended: <strong>Moderate.set</strong> for most traders</li>
+                        </ul>
+                    </li>
+                    <li><strong>Enable AutoTrading:</strong>
+                        <ul>
+                            <li>Click <strong>"AutoTrading"</strong> button in toolbar (or press F7)</li>
+                            <li>Ensure button is green/enabled</li>
+                            <li>EA will start trading automatically</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="guide-section">
+                <h2>📊 Step 4: Choose Your Risk Profile</h2>
+                <h3>For Beginners / Small Accounts ($500-$2,000):</h3>
+                <ul>
+                    <li><strong>Conservative.set</strong> or <strong>FixedLot_0.01.set</strong></li>
+                    <li>Very safe, low risk per trade</li>
+                </ul>
+                <h3>For Most Traders ($1,000-$5,000):</h3>
+                <ul>
+                    <li><strong>Moderate.set</strong> ⭐ <strong>RECOMMENDED</strong></li>
+                    <li>Balanced risk/reward</li>
+                    <li>Proven configuration</li>
+                </ul>
+                <h3>For Experienced Traders ($5,000+):</h3>
+                <ul>
+                    <li><strong>Moderate.set</strong> or <strong>Aggressive.set</strong></li>
+                    <li>Depends on your risk tolerance</li>
+                </ul>
+                <p style="margin-top: var(--spacing-md);">
+                    <a href="../setfiles/" class="btn btn-primary">Download Set Files →</a>
+                </p>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="guide-section">
+                <h2>✅ Step 5: Verify Setup</h2>
+                <p>Check these items to ensure everything is working:</p>
+                <ul class="checklist">
+                    <li>EA attached to XAUUSD M15 chart</li>
+                    <li>AutoTrading enabled (green button)</li>
+                    <li>Risk profile loaded</li>
+                    <li>No errors in Experts tab</li>
+                    <li>EA shows "smiley face" icon on chart</li>
+                </ul>
+            </div>
+
+            <!-- First Trade Checklist -->
+            <div class="guide-section">
+                <h2>🎓 First Trade Checklist</h2>
+                <p>Before your first live trade:</p>
+                <ol>
+                    <li><strong>Test on Demo First:</strong>
+                        <ul>
+                            <li>Always test on demo account first</li>
+                            <li>Run for at least 1 week</li>
+                            <li>Verify performance matches expectations</li>
+                        </ul>
+                    </li>
+                    <li><strong>Check Settings:</strong>
+                        <ul>
+                            <li>Verify risk percentage is appropriate</li>
+                            <li>Confirm lot size settings</li>
+                            <li>Review max drawdown limits</li>
+                        </ul>
+                    </li>
+                    <li><strong>Monitor Initial Trades:</strong>
+                        <ul>
+                            <li>Watch first few trades closely</li>
+                            <li>Check execution quality</li>
+                            <li>Verify stop loss and take profit levels</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Monitoring -->
+            <div class="guide-section">
+                <h2>📈 Monitoring Your EA</h2>
+                <h3>Daily Checks:</h3>
+                <ul>
+                    <li><strong>Check Terminal Tab:</strong>
+                        <ul>
+                            <li>View open positions</li>
+                            <li>Monitor pending orders</li>
+                            <li>Review trade history</li>
+                        </ul>
+                    </li>
+                    <li><strong>Check Journal Tab:</strong>
+                        <ul>
+                            <li>Look for any errors</li>
+                            <li>Review EA messages</li>
+                            <li>Check for warnings</li>
+                        </ul>
+                    </li>
+                    <li><strong>Review Performance:</strong>
+                        <ul>
+                            <li>Track win rate</li>
+                            <li>Monitor drawdown</li>
+                            <li>Check daily profit/loss</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h3>Weekly Reviews:</h3>
+                <ul>
+                    <li>Analyze trade performance</li>
+                    <li>Review risk metrics</li>
+                    <li>Adjust settings if needed</li>
+                    <li>Check account balance</li>
+                </ul>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div class="guide-section">
+                <h2>🆘 Troubleshooting</h2>
+                <h3>EA Not Trading?</h3>
+                <ol>
+                    <li><strong>Check AutoTrading:</strong>
+                        <ul>
+                            <li>Ensure AutoTrading button is green</li>
+                            <li>Check Tools → Options → Expert Advisors</li>
+                        </ul>
+                    </li>
+                    <li><strong>Check Inputs:</strong>
+                        <ul>
+                            <li>Verify <code>InpEnableTrading = true</code></li>
+                            <li>Check risk settings are valid</li>
+                        </ul>
+                    </li>
+                    <li><strong>Check Symbol:</strong>
+                        <ul>
+                            <li>Ensure chart is XAUUSD</li>
+                            <li>Verify timeframe is M15</li>
+                        </ul>
+                    </li>
+                    <li><strong>Check Account:</strong>
+                        <ul>
+                            <li>Ensure sufficient margin</li>
+                            <li>Verify account is enabled for trading</li>
+                        </ul>
+                    </li>
+                </ol>
+                <h3>EA Shows Errors?</h3>
+                <ol>
+                    <li>Check Journal tab for error messages</li>
+                    <li>Verify EA is compiled (should be .ex5 file)</li>
+                    <li>Check MT5 version (should be latest)</li>
+                    <li>Restart MT5 if needed</li>
+                </ol>
+            </div>
+
+            <!-- Warning -->
+            <div class="warning-box">
+                <h4>⚠️ Important Notes</h4>
+                <ul>
+                    <li>Always test on demo account first</li>
+                    <li>Start with Conservative or Moderate profile</li>
+                    <li>Use proper risk management</li>
+                    <li>Never risk more than you can afford</li>
+                    <li>Monitor regularly</li>
+                </ul>
+            </div>
+
+            <!-- Need Help -->
+            <div class="guide-section">
+                <h2>📞 Need Help?</h2>
+                <ul>
+                    <li>📖 <a href="index.html" style="color: var(--color-gold);">Full Documentation</a></li>
+                    <li>❓ <a href="support.html" style="color: var(--color-gold);">Support & FAQ</a></li>
+                    <li>📁 <a href="../setfiles/" style="color: var(--color-gold);">Set Files</a></li>
+                    <li>⚙️ <a href="parameters.html" style="color: var(--color-gold);">Parameter Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GoldCruiseAI</h3>
+                    <p>Premium AI-Enhanced Gold Trading Expert Advisor</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="quick-start.html">Quick Start</a></li>
+                        <li><a href="parameters.html">Parameters</a></li>
+                        <li><a href="performance.html">Performance</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../setfiles/">Set Files</a></li>
+                        <li><a href="support.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Purchase</h4>
+                    <ul>
+                        <li><a href="https://www.mql5.com/en/market/product/158880" target="_blank">Buy on MQL5</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EridianLabs. All rights reserved.</p>
+                <p class="footer-warning">⚠️ Trading involves risk. Past performance does not guarantee future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
+

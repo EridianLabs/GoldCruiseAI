@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parameter Guide - GoldCruiseAI</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .params-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .param-section {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(184, 167, 105, 0.2);
+            border-radius: 15px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        .param-section h2 {
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-2xl);
+        }
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--spacing-md);
+        }
+        .param-table th,
+        .param-table td {
+            padding: var(--spacing-sm);
+            text-align: left;
+            border-bottom: 1px solid rgba(184, 167, 105, 0.1);
+        }
+        .param-table th {
+            background: rgba(184, 167, 105, 0.1);
+            color: var(--color-gold);
+            font-weight: 600;
+        }
+        .param-table tr:hover {
+            background: rgba(184, 167, 105, 0.05);
+        }
+        .param-name {
+            font-family: 'Courier New', monospace;
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+        .recommendation-box {
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 10px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .recommendation-box h4 {
+            color: #4CAF50;
+            margin-bottom: var(--spacing-sm);
+        }
+        code {
+            background: rgba(184, 167, 105, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--color-gold-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../duplicate-reference-image.svg" alt="GoldCruiseAI" class="logo">
+                    <span class="brand-text">GoldCruiseAI</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html#features">Features</a></li>
+                <li><a href="../index.html#performance">Performance</a></li>
+                <li><a href="index.html">Documentation</a></li>
+                <li><a href="../setfiles/">Set Files</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="https://www.mql5.com/en/market/product/158880" class="btn-primary" target="_blank">Buy Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="min-height: 40vh;">
+        <div class="container">
+            <h1 class="hero-title">⚙️ Parameter Guide</h1>
+            <p class="hero-subtitle">Complete reference for all GoldCruiseAI parameters</p>
+        </div>
+    </section>
+
+    <!-- Parameters Content -->
+    <section class="container" style="padding: var(--spacing-xl) 0;">
+        <div class="params-content">
+            <p style="text-align: center; color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
+                This guide covers all input parameters for GoldCruiseAI. For quick setup, use the pre-configured <a href="../setfiles/" style="color: var(--color-gold);">set files</a>.
+            </p>
+
+            <!-- Trading Settings -->
+            <div class="param-section">
+                <h2>1. Trading Settings</h2>
+                <table class="param-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">InpEnableTrading</td>
+                            <td>true</td>
+                            <td>Enable/disable trading. Set to false to disable all trades.</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpTimeframe</td>
+                            <td>15</td>
+                            <td>Trading timeframe in minutes. <strong>Recommended: 15 (M15)</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpOnlyOnePosition</td>
+                            <td>true</td>
+                            <td>Allow only one position at a time. Prevents over-trading.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Risk Management -->
+            <div class="param-section">
+                <h2>2. Risk Management</h2>
+                <table class="param-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">InpRiskPercent</td>
+                            <td>1.0</td>
+                            <td>Risk per trade as % of account balance. <strong>Recommended: 0.5-2.0%</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpUseFixedLot</td>
+                            <td>false</td>
+                            <td>Use fixed lot size instead of percentage-based.</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpFixedLotSize</td>
+                            <td>0.01</td>
+                            <td>Fixed lot size (if InpUseFixedLot = true).</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpATRMultiplierSL</td>
+                            <td>2.0</td>
+                            <td>ATR multiplier for stop loss. Higher = wider stops.</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpATRMultiplierTP</td>
+                            <td>4.0</td>
+                            <td>ATR multiplier for take profit. Higher = wider targets.</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpMaxDailyDrawdown</td>
+                            <td>5.0</td>
+                            <td>Maximum daily drawdown %. EA stops trading if exceeded.</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpMaxTradesPerDay</td>
+                            <td>10</td>
+                            <td>Maximum trades per day. Prevents over-trading.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- AI Confidence Engine -->
+            <div class="param-section">
+                <h2>3. AI Confidence Engine</h2>
+                <table class="param-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">InpMinConfidence</td>
+                            <td>0.5</td>
+                            <td>Minimum confidence for long trades (0.0-1.0). Higher = fewer trades.</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpMinConfidenceShort</td>
+                            <td>0.32</td>
+                            <td>Minimum confidence for short trades. Lower threshold for shorts.</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">InpConfidenceAgreementWeight</td>
+                            <td>0.3</td>
+                            <td>Weight for indicator agreement in confidence calculation.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Recommended Settings -->
+            <div class="recommendation-box">
+                <h4>💡 Recommended Settings by Account Size</h4>
+                <div style="color: var(--color-text); line-height: 1.8;">
+                    <p><strong>Small Account ($500-$1,000):</strong></p>
+                    <ul style="margin-left: var(--spacing-md);">
+                        <li><code>InpRiskPercent = 0.5</code></li>
+                        <li><code>InpUseFixedLot = true</code></li>
+                        <li><code>InpFixedLotSize = 0.01</code></li>
+                        <li><code>InpMaxDailyDrawdown = 3.0</code></li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm);"><strong>Use:</strong> Conservative.set or FixedLot_0.01.set</p>
+                    
+                    <p style="margin-top: var(--spacing-md);"><strong>Medium Account ($1,000-$5,000):</strong></p>
+                    <ul style="margin-left: var(--spacing-md);">
+                        <li><code>InpRiskPercent = 1.0</code></li>
+                        <li><code>InpUseFixedLot = false</code></li>
+                        <li><code>InpMaxDailyDrawdown = 5.0</code></li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm);"><strong>Use:</strong> Moderate.set ⭐ <strong>RECOMMENDED</strong></p>
+                    
+                    <p style="margin-top: var(--spacing-md);"><strong>Large Account ($5,000+):</strong></p>
+                    <ul style="margin-left: var(--spacing-md);">
+                        <li><code>InpRiskPercent = 2.0</code></li>
+                        <li><code>InpMaxDailyDrawdown = 7.0</code></li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm);"><strong>Use:</strong> Aggressive.set or MaxProfit variants</p>
+                </div>
+            </div>
+
+            <!-- Important Notes -->
+            <div class="param-section">
+                <h2>⚠️ Important Notes</h2>
+                <ul style="color: var(--color-text); line-height: 1.8;">
+                    <li><strong>Never change parameters without testing:</strong> Always test on demo first, use Strategy Tester to validate changes, and monitor performance after changes.</li>
+                    <li><strong>Start with defaults:</strong> Use provided set files, only adjust if you understand the impact, and document your changes.</li>
+                    <li><strong>Risk management is critical:</strong> Never risk more than you can afford, use appropriate InpRiskPercent, and set proper InpMaxDailyDrawdown.</li>
+                </ul>
+            </div>
+
+            <!-- Need Help -->
+            <div class="param-section">
+                <h2>📞 Need Help?</h2>
+                <ul style="color: var(--color-text);">
+                    <li>📖 <a href="quick-start.html" style="color: var(--color-gold);">Quick Start Guide</a></li>
+                    <li>❓ <a href="support.html" style="color: var(--color-gold);">Support & FAQ</a></li>
+                    <li>📁 <a href="../setfiles/" style="color: var(--color-gold);">Set Files</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GoldCruiseAI</h3>
+                    <p>Premium AI-Enhanced Gold Trading Expert Advisor</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="quick-start.html">Quick Start</a></li>
+                        <li><a href="parameters.html">Parameters</a></li>
+                        <li><a href="performance.html">Performance</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../setfiles/">Set Files</a></li>
+                        <li><a href="support.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Purchase</h4>
+                    <ul>
+                        <li><a href="https://www.mql5.com/en/market/product/158880" target="_blank">Buy on MQL5</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EridianLabs. All rights reserved.</p>
+                <p class="footer-warning">⚠️ Trading involves risk. Past performance does not guarantee future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,37 @@
+# GitHub Pages Configuration for GoldCruiseAI
+
+title: GoldCruiseAI
+description: Premium AI-Enhanced Gold Trading Expert Advisor
+url: https://eridianlabs.github.io
+baseurl: /GoldCruiseAI
+
+# Theme (using custom CSS instead)
+theme: null
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - node_modules
+  - vendor
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Site settings
+author: EridianLabs
+email: support@eridianlabs.com
+
+# Social
+github_username: EridianLabs
+
+# Analytics (add your tracking ID if needed)
+# google_analytics: UA-XXXXXXXXX-X
+

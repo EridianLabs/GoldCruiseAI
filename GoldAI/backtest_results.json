@@ -1,0 +1,146 @@
+{
+  "expert": "GoldAITrader",
+  "symbol": "XAUUSD",
+  "period": {
+    "timeframe": "M15",
+    "start_date": "2024.01.01",
+    "end_date": "2025.01.03"
+  },
+  "inputs": {
+    "trading": {
+      "InpEnableTrading": true,
+      "InpTimeframe": 15,
+      "InpOnlyOnePosition": true
+    },
+    "indicators": {
+      "InpFastEMAPeriod": 21,
+      "InpSlowEMAPeriod": 50,
+      "InpTrendEMAPeriod": 200,
+      "InpUseHigherTimeframe": true,
+      "InpHigherTimeframe": 16388
+    },
+    "oscillators": {
+      "InpRSIPeriod": 14,
+      "InpCCIPeriod": 14,
+      "InpMomentumPeriod": 10,
+      "InpRSIOversold": 30.0,
+      "InpRSIOverbought": 70.0
+    },
+    "volatility": {
+      "InpATRPeriod": 14,
+      "InpMinVolatility": 0.0,
+      "InpMaxVolatility": 0.0
+    },
+    "risk_management": {
+      "InpRiskPercent": 1.0,
+      "InpUseFixedLot": false,
+      "InpFixedLotSize": 0.01,
+      "InpATRMultiplierSL": 2.0,
+      "InpATRMultiplierTP": 3.0,
+      "InpMaxDailyDrawdown": 5.0,
+      "InpMaxTradesPerDay": 10,
+      "InpMaxLossStreak": 5
+    },
+    "trailing": {
+      "InpEnableBreakEven": true,
+      "InpBreakEvenTriggerPips": 20.0,
+      "InpBreakEvenPips": 10.0,
+      "InpEnableTrailingStop": true,
+      "InpTrailingStopPips": 30.0,
+      "InpTrailingStepPips": 10.0
+    },
+    "sessions": {
+      "InpEnableLondonSession": true,
+      "InpEnableNewYorkSession": true,
+      "InpEnableAsianSession": false,
+      "InpAvoidRollover": true
+    },
+    "news_filter": {
+      "InpEnableNewsFilter": false,
+      "InpNewsAvoidMinutesBefore": 30,
+      "InpNewsAvoidMinutesAfter": 30
+    },
+    "confidence": {
+      "InpMinConfidence": 0.5,
+      "InpConfidenceAgreementWeight": 0.3,
+      "InpConfidenceStrengthWeight": 0.3,
+      "InpConfidenceVolatilityWeight": 0.2,
+      "InpConfidenceTrendWeight": 0.2
+    },
+    "logging": {
+      "InpEnableFileLogging": true,
+      "InpEnableConsoleLogging": true
+    }
+  },
+  "broker": {
+    "company": "Pepperstone Limited",
+    "currency": "profit in pips",
+    "initial_deposit": 1000.00,
+    "leverage": "1:100"
+  },
+  "results": {
+    "history_quality": "100%",
+    "bars": 23819,
+    "ticks": 37488020,
+    "symbols": 1,
+    "profit_loss": {
+      "total_net_profit": 83.29,
+      "gross_profit": 423.37,
+      "gross_loss": -340.08,
+      "profit_factor": 1.24,
+      "expected_payoff": 0.08
+    },
+    "drawdown": {
+      "balance_drawdown_absolute": 26.55,
+      "equity_drawdown_absolute": 26.92,
+      "balance_drawdown_maximal": 41.10,
+      "balance_drawdown_maximal_percent": 3.78,
+      "equity_drawdown_maximal": 42.07,
+      "equity_drawdown_maximal_percent": 3.87,
+      "balance_drawdown_relative": 3.78,
+      "equity_drawdown_relative": 3.87
+    },
+    "risk_metrics": {
+      "recovery_factor": 1.98,
+      "sharpe_ratio": 7.22,
+      "z_score": 1.51,
+      "z_score_percentile": 86.90,
+      "ahpr": 1.0001,
+      "ahpr_percent": 0.01,
+      "ghpr": 1.0001,
+      "ghpr_percent": 0.01,
+      "lr_correlation": 0.88,
+      "lr_standard_error": 16.44,
+      "margin_level": 1946160.00
+    },
+    "trades": {
+      "total_trades": 1014,
+      "total_deals": 2028,
+      "short_trades": 1,
+      "short_trades_win_percent": 100.00,
+      "long_trades": 1013,
+      "long_trades_win_percent": 93.09,
+      "profit_trades": 944,
+      "profit_trades_percent": 93.10,
+      "loss_trades": 70,
+      "loss_trades_percent": 6.90
+    },
+    "trade_statistics": {
+      "largest_profit_trade": 5.88,
+      "largest_loss_trade": -12.84,
+      "average_profit_trade": 0.45,
+      "average_loss_trade": -4.86,
+      "maximum_consecutive_wins": 54,
+      "maximum_consecutive_wins_profit": 27.31,
+      "maximum_consecutive_losses": 2,
+      "maximum_consecutive_losses_loss": -9.88,
+      "maximal_consecutive_profit": 30.21,
+      "maximal_consecutive_profit_count": 48,
+      "maximal_consecutive_loss": -12.84,
+      "maximal_consecutive_loss_count": 1,
+      "average_consecutive_wins": 14,
+      "average_consecutive_losses": 1
+    }
+  }
+}
+
