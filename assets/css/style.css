@@ -168,7 +168,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--spacing-xl) 0;
+    padding: calc(var(--spacing-xl) + 80px) 0 var(--spacing-xl) 0;
     overflow: hidden;
 }
 
@@ -208,6 +208,9 @@ body {
     text-align: center;
     z-index: 1;
     max-width: 900px;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .hero-badge {
@@ -260,6 +263,9 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--spacing-md);
     margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
 }
 
 .stat-item {
@@ -331,6 +337,11 @@ body {
 /* Sections */
 section {
     padding: var(--spacing-xl) 0;
+    position: relative;
+}
+
+section:first-of-type {
+    padding-top: calc(var(--spacing-xl) + 80px);
 }
 
 .section-title {
@@ -357,6 +368,10 @@ section {
 /* Performance Metrics */
 .performance {
     background: var(--color-bg-light);
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
 }
 
 .metrics-grid {
@@ -364,6 +379,8 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-md);
     margin-top: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
 }
 
 .metric-card {
@@ -900,6 +917,18 @@ section {
 
     .hero-stats {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero {
+        padding: calc(var(--spacing-lg) + 80px) 0 var(--spacing-lg) 0;
+        min-height: auto;
+    }
+    
+    .hero-content {
+        padding: 0 var(--spacing-sm);
     }
 
     .metrics-grid {
