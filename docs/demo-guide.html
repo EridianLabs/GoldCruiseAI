@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Guide - GoldCruiseAI</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .demo-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding: calc(var(--spacing-xl) + 80px) 0 var(--spacing-xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(184, 167, 105, 0.1) 0%, transparent 70%);
+        }
+        
+        .demo-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .demo-hero .subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .demo-hero .cta-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .guide-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+        
+        .guide-section {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(184, 167, 105, 0.2);
+            border-radius: 15px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            transition: var(--transition-normal);
+        }
+        
+        .guide-section:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 10px 30px rgba(184, 167, 105, 0.1);
+        }
+        
+        .guide-section h2 {
+            color: var(--color-gold);
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid rgba(184, 167, 105, 0.3);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .guide-section h3 {
+            color: var(--color-gold-light);
+            font-size: var(--font-size-xl);
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .guide-section h4 {
+            color: var(--color-text-light);
+            font-size: var(--font-size-lg);
+            margin-top: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: var(--spacing-md);
+            padding-left: 3.5rem;
+            position: relative;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+            color: var(--color-primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            box-shadow: 0 4px 15px rgba(184, 167, 105, 0.3);
+        }
+        
+        .metrics-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, rgba(26, 90, 88, 0.2) 0%, rgba(184, 167, 105, 0.1) 100%);
+            border: 1px solid rgba(184, 167, 105, 0.3);
+            border-radius: 10px;
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: var(--color-text-light);
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, rgba(184, 167, 105, 0.15) 0%, rgba(26, 90, 88, 0.15) 100%);
+            border: 2px solid var(--color-gold);
+            border-radius: 15px;
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            text-align: center;
+        }
+        
+        .cta-box h3 {
+            color: var(--color-gold);
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .cta-box p {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-light);
+        }
+        
+        .cta-buttons-inline {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .info-box {
+            background: rgba(12, 84, 96, 0.2);
+            border-left: 4px solid #0c5460;
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .info-box h4 {
+            color: #0c5460;
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #FFC107;
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .warning-box h4 {
+            color: #FFC107;
+            margin-top: 0;
+        }
+        
+        .code-snippet {
+            background: var(--color-bg);
+            border: 1px solid rgba(184, 167, 105, 0.2);
+            border-left: 4px solid var(--color-gold);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            font-family: 'Courier New', monospace;
+            color: var(--color-gold-light);
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-md) 0;
+            background: var(--color-bg-card);
+        }
+        
+        th {
+            background: rgba(184, 167, 105, 0.2);
+            color: var(--color-gold);
+            padding: var(--spacing-sm);
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid rgba(184, 167, 105, 0.1);
+            color: var(--color-text);
+        }
+        
+        tr:hover {
+            background: rgba(184, 167, 105, 0.05);
+        }
+        
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 26, 24, 0.98);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--color-gold);
+            padding: var(--spacing-sm) var(--spacing-md);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sticky-cta .text {
+            color: var(--color-text-light);
+            font-size: 0.9em;
+        }
+        
+        .sticky-cta .btn {
+            padding: var(--spacing-xs) var(--spacing-md);
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .sticky-cta {
+                flex-direction: column;
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+            
+            .sticky-cta .text {
+                font-size: 0.8em;
+                text-align: center;
+            }
+        }
+        
+        .section-icon {
+            font-size: 1.5em;
+        }
+        
+        ul, ol {
+            margin-left: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        li {
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-text);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--color-gold);
+            color: var(--color-primary-dark);
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: var(--spacing-xs);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../duplicate-reference-image.svg" alt="GoldCruiseAI" class="logo">
+                    <span class="brand-text">GoldCruiseAI</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html#features">Features</a></li>
+                <li><a href="../index.html#performance">Performance</a></li>
+                <li><a href="index.html">Documentation</a></li>
+                <li><a href="../setfiles/">Set Files</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="https://www.mql5.com/en/market/product/158880" class="btn-primary" target="_blank">Buy Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="demo-hero">
+        <div class="container">
+            <h1>🚀 GoldCruiseAI Demo Guide</h1>
+            <p class="subtitle">Get started with professional gold trading automation in minutes</p>
+            <div class="metrics-display" style="max-width: 800px; margin: var(--spacing-lg) auto 0;">
+                <div class="metric-card">
+                    <div class="metric-value">93.93%</div>
+                    <div class="metric-label">Win Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5.60</div>
+                    <div class="metric-label">Profit Factor</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">0.68%</div>
+                    <div class="metric-label">Max Drawdown</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">25 Years</div>
+                    <div class="metric-label">Validated</div>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="https://www.mql5.com/en/market/product/158880" class="btn btn-primary btn-large" target="_blank">
+                    Buy Full Version - $599
+                </a>
+                <a href="https://www.mql5.com/en/market/product/158880?period=4" class="btn btn-secondary btn-large" target="_blank">
+                    Try 1 Month - $99
+                </a>
+            </div>
+            <p style="margin-top: var(--spacing-md); color: var(--color-text-muted); font-size: 0.9em;">
+                <strong>Note:</strong> All metrics are from historical backtesting (2000-2025). Past performance does not guarantee future results.
+            </p>
+        </div>
+    </section>
+
+    <!-- Guide Content -->
+    <div class="guide-content">
+        <!-- Introduction -->
+        <div class="guide-section">
+            <h2><span class="section-icon">📋</span> About This Guide</h2>
+            <p>This comprehensive demo guide will walk you through setting up and using GoldCruiseAI, a professional Expert Advisor designed specifically for XAUUSD (Gold) trading. Whether you're a beginner or experienced trader, this guide will help you get started quickly and safely.</p>
+            <p>GoldCruiseAI uses AI-enhanced confidence scoring, multi-indicator filtering, and comprehensive risk management to deliver consistent results. Based on historical backtesting over 25 years, the system achieved exceptional performance metrics.</p>
+            
+            <div class="cta-box">
+                <h3>Ready to Start Trading?</h3>
+                <p>Get the full version with all features, 6 risk profiles, and lifetime updates</p>
+                <div class="cta-buttons-inline">
+                    <a href="https://www.mql5.com/en/market/product/158880" class="btn btn-primary" target="_blank">Buy Now - $599</a>
+                    <a href="https://www.mql5.com/en/market/product/158880?period=4" class="btn btn-secondary" target="_blank">Try Monthly - $99</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Requirements -->
+        <div class="guide-section">
+            <h2><span class="section-icon">💻</span> System Requirements</h2>
+            
+            <h3>Required Software</h3>
+            <ul>
+                <li><strong>MetaTrader 5:</strong> Latest version (download from your broker or mt5.com)</li>
+                <li><strong>Operating System:</strong> Windows, Mac, or Linux (MT5 compatible)</li>
+                <li><strong>Internet Connection:</strong> Required for live trading (EA works offline for backtesting)</li>
+            </ul>
+            
+            <h3>Account Requirements</h3>
+            <table>
+                <tr>
+                    <th>Requirement</th>
+                    <th>Recommended</th>
+                    <th>Minimum</th>
+                </tr>
+                <tr>
+                    <td>Account Balance</td>
+                    <td>$1,000 - $5,000</td>
+                    <td>$500</td>
+                </tr>
+                <tr>
+                    <td>Leverage</td>
+                    <td>1:100</td>
+                    <td>1:50 or higher</td>
+                </tr>
+                <tr>
+                    <td>Account Type</td>
+                    <td>Standard, ECN</td>
+                    <td>Any</td>
+                </tr>
+                <tr>
+                    <td>Broker</td>
+                    <td>Any MT5 broker</td>
+                    <td>Any MT5 broker</td>
+                </tr>
+            </table>
+            
+            <h3>Trading Specifications</h3>
+            <div class="info-box">
+                <h4>📊 Optimal Trading Setup</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Symbol:</strong> XAUUSD (Gold)</li>
+                    <li><strong>Timeframe:</strong> M15 (15-minute charts)</li>
+                    <li><strong>Execution:</strong> Market orders</li>
+                    <li><strong>Positions:</strong> One position at a time</li>
+                    <li><strong>Sessions:</strong> London & New York (configurable)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Installation -->
+        <div class="guide-section">
+            <h2><span class="section-icon">📥</span> Installation Guide</h2>
+            
+            <h3>Step 1: Purchase & Download</h3>
+            <div class="steps">
+                <div class="step">
+                    <h4>Purchase GoldCruiseAI</h4>
+                    <p>Visit the MQL5 Marketplace and choose your preferred option:</p>
+                    <ul>
+                        <li><strong>Unlimited License:</strong> $599 (one-time purchase, lifetime updates)</li>
+                        <li><strong>Monthly Rental:</strong> $99 (try before you buy, perfect for testing)</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm);">
+                        <a href="https://www.mql5.com/en/market/product/158880" class="btn btn-primary" target="_blank">View on MQL5 Marketplace →</a>
+                    </p>
+                </div>
+                
+                <div class="step">
+                    <h4>Automatic Installation</h4>
+                    <p>After purchase, the EA file will be automatically downloaded to your MT5 data folder. Simply restart MT5 and you'll see GoldCruiseAI in the Navigator panel under Expert Advisors.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Manual Installation (Alternative)</h4>
+                    <p>If you need to install manually:</p>
+                    <ol>
+                        <li>Open MT5 → File → Open Data Folder</li>
+                        <li>Navigate to: <code>MQL5 → Experts</code></li>
+                        <li>Copy <code>GoldCruiseAI.ex5</code> to this folder</li>
+                        <li>Restart MT5</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="cta-box">
+                <h3>💡 Not Ready to Buy Yet?</h3>
+                <p>Try GoldCruiseAI risk-free with our 1-month rental option. Perfect for testing before committing to the full version.</p>
+                <div class="cta-buttons-inline">
+                    <a href="https://www.mql5.com/en/market/product/158880?period=4" class="btn btn-secondary" target="_blank">Rent for 1 Month - $99</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configuration -->
+        <div class="guide-section">
+            <h2><span class="section-icon">⚙️</span> Configuration</h2>
+            
+            <h3>Step 2: Attach EA to Chart</h3>
+            <div class="steps">
+                <div class="step">
+                    <h4>Open XAUUSD Chart</h4>
+                    <p>In MetaTrader 5, open a chart for XAUUSD (Gold). Right-click on the chart and select "Symbols" → search for "XAUUSD" → double-click to add.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Set Timeframe to M15</h4>
+                    <p>Change the chart timeframe to M15 (15 minutes). You can do this by clicking the M15 button in the toolbar or pressing Alt+3.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Drag EA to Chart</h4>
+                    <p>From the Navigator panel, drag "GoldCruiseAI" onto your XAUUSD M15 chart. The EA input window will open automatically.</p>
+                </div>
+            </div>
+            
+            <h3>Step 3: Load Risk Profile</h3>
+            <div class="steps">
+                <div class="step">
+                    <h4>Open EA Properties</h4>
+                    <p>Right-click on the EA icon in the top-right corner of your chart → select "Properties" (or double-click the EA icon).</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Load Set File</h4>
+                    <p>In the Inputs tab, click the "Load" button. Navigate to your set files folder and select your preferred risk profile. The full version includes 6 pre-configured set files:</p>
+                    <ul>
+                        <li><strong>Conservative.set</strong> - 0.5% risk, fixed 0.01 lot (beginners)</li>
+                        <li><strong>Moderate.set</strong> - 1.0% risk, adaptive sizing (recommended)</li>
+                        <li><strong>Aggressive.set</strong> - 2.0% risk, higher returns (experienced)</li>
+                        <li><strong>FixedLot_0.01.set</strong> - Fixed lot size for small accounts</li>
+                        <li><strong>MaxProfit_2Percent.set</strong> - 2% risk variant</li>
+                        <li><strong>MaxProfit_3Percent.set</strong> - 3% risk variant</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h4>Verify Settings</h4>
+                    <p>Review all parameters to ensure they match your risk tolerance. Key settings to check:</p>
+                    <ul>
+                        <li>Risk per trade percentage</li>
+                        <li>Maximum daily drawdown limit</li>
+                        <li>Maximum trades per day</li>
+                        <li>Stop loss and take profit multipliers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h4>💡 Set Files Included</h4>
+                <p>The full version includes all 6 risk profile set files, ready to use. <a href="../setfiles/" style="color: var(--color-gold);">View all set files →</a></p>
+            </div>
+        </div>
+
+        <!-- Key Parameters -->
+        <div class="guide-section">
+            <h2><span class="section-icon">🔧</span> Key Parameters</h2>
+            
+            <h3>Risk Management Parameters</h3>
+            <p><strong>Risk Per Trade:</strong> Percentage of account balance risked per trade. Lower values = lower risk, higher values = higher risk.</p>
+            <ul>
+                <li>0.5% = Conservative (beginners)</li>
+                <li>1.0% = Moderate (recommended for most traders)</li>
+                <li>2.0% = Aggressive (experienced traders)</li>
+            </ul>
+            
+            <p><strong>Maximum Daily Drawdown:</strong> EA will stop trading if daily drawdown exceeds this limit. Helps protect your account from excessive losses.</p>
+            
+            <p><strong>Maximum Trades Per Day:</strong> Limits the number of trades the EA can open per day. Prevents overtrading and helps manage risk.</p>
+            
+            <h3>Trading Parameters</h3>
+            <p><strong>Confidence Thresholds:</strong> Minimum confidence score required to enter a trade. Higher values = fewer but higher quality trades.</p>
+            
+            <p><strong>Stop Loss & Take Profit Multipliers:</strong> Based on ATR (Average True Range). SL = 2x ATR, TP = 4x ATR by default. This ensures stops and targets adapt to market volatility.</p>
+            
+            <div class="warning-box">
+                <h4>⚠️ Important</h4>
+                <p>All parameters are fully adjustable in the full version. The demo shows basic functionality. For complete control over all settings, <a href="https://www.mql5.com/en/market/product/158880" style="color: var(--color-gold); font-weight: 600;">purchase the full version →</a></p>
+            </div>
+        </div>
+
+        <!-- Activation -->
+        <div class="guide-section">
+            <h2><span class="section-icon">✅</span> Activation & Testing</h2>
+            
+            <h3>Step 4: Enable AutoTrading</h3>
+            <div class="steps">
+                <div class="step">
+                    <h4>Check AutoTrading Button</h4>
+                    <p>In MetaTrader 5 toolbar, ensure the "AutoTrading" button is enabled (green). If it's gray, click it to enable.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Verify EA Status</h4>
+                    <p>Check the EA icon in the top-right corner of your chart. It should show a smiley face (😊) when active. If it shows a sad face (☹), check the Experts tab for error messages.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Monitor First Trades</h4>
+                    <p>The EA will automatically analyze the market and enter trades when conditions are met. Monitor the first few trades to ensure everything is working correctly.</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Always Test on Demo First</h4>
+                <p><strong>Before trading with real money, test GoldCruiseAI on a demo account for at least 2-4 weeks.</strong> This allows you to:</p>
+                <ul>
+                    <li>Understand how the EA works</li>
+                    <li>Verify it works with your broker</li>
+                    <li>Test different risk profiles</li>
+                    <li>Build confidence in the system</li>
+                </ul>
+                <p style="margin-top: var(--spacing-sm);">
+                    <strong>Try it risk-free:</strong> <a href="https://www.mql5.com/en/market/product/158880?period=4" style="color: var(--color-gold); font-weight: 600;">Rent for 1 month - $99 →</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="guide-section">
+            <h2><span class="section-icon">🎯</span> Best Practices</h2>
+            
+            <h3>Risk Management</h3>
+            <ul>
+                <li><strong>Start Small:</strong> Begin with conservative risk settings</li>
+                <li><strong>Never Risk More Than You Can Afford:</strong> Only trade with disposable capital</li>
+                <li><strong>Use Stop Losses:</strong> Always have SL/TP configured (EA does this automatically)</li>
+                <li><strong>Monitor Daily:</strong> Check your account regularly, especially in first weeks</li>
+                <li><strong>Respect Drawdown Limits:</strong> Don't disable max drawdown protection</li>
+            </ul>
+            
+            <h3>Account Management</h3>
+            <ul>
+                <li><strong>Appropriate Account Size:</strong> Minimum $500, recommended $1,000+</li>
+                <li><strong>Broker Selection:</strong> Choose a reputable broker with tight spreads on XAUUSD</li>
+                <li><strong>VPS Consideration:</strong> For 24/7 trading, consider a VPS (Virtual Private Server)</li>
+                <li><strong>Regular Backups:</strong> Save your set files and configurations</li>
+            </ul>
+            
+            <h3>Performance Expectations</h3>
+            <p>Based on historical backtesting (2000-2025):</p>
+            <ul>
+                <li><strong>Win Rate:</strong> ~94% (varies with market conditions)</li>
+                <li><strong>Average Trades:</strong> ~2-3 trades per week</li>
+                <li><strong>Drawdown:</strong> Typically under 1% (with proper risk settings)</li>
+                <li><strong>Profit Factor:</strong> ~5.60 (historical average)</li>
+            </ul>
+            
+            <div class="info-box">
+                <h4>💡 Remember</h4>
+                <p><strong>Past performance does not guarantee future results.</strong> Actual trading results will vary based on market conditions, broker execution, spreads, and your risk settings. Always trade responsibly.</p>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div class="guide-section">
+            <h2><span class="section-icon">📞</span> Support & Resources</h2>
+            
+            <h3>Documentation</h3>
+            <ul>
+                <li><a href="quick-start.html" style="color: var(--color-gold);">Quick Start Guide</a> - Step-by-step setup</li>
+                <li><a href="parameters.html" style="color: var(--color-gold);">Parameter Guide</a> - Detailed settings explanation</li>
+                <li><a href="performance.html" style="color: var(--color-gold);">Performance Summary</a> - Historical backtest results</li>
+                <li><a href="support.html" style="color: var(--color-gold);">Support & FAQ</a> - Get help and answers</li>
+            </ul>
+            
+            <h3>Support Channels</h3>
+            <div class="info-box">
+                <h4>📞 How to Get Help</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>MQL5 Support Thread:</strong> Post questions in the official support thread</li>
+                    <li><strong>MQL5 Product Page:</strong> Check for updates and announcements</li>
+                    <li><strong>Email Support:</strong> Contact through MQL5 messaging system</li>
+                    <li><strong>Documentation:</strong> Review parameter guide for detailed settings</li>
+                </ul>
+            </div>
+            
+            <div class="cta-box">
+                <h3>🚀 Ready to Get Started?</h3>
+                <p>Join traders who are already using GoldCruiseAI for automated gold trading</p>
+                <div class="cta-buttons-inline">
+                    <a href="https://www.mql5.com/en/market/product/158880" class="btn btn-primary btn-large" target="_blank">
+                        Buy Full Version - $599
+                    </a>
+                    <a href="https://www.mql5.com/en/market/product/158880?period=4" class="btn btn-secondary btn-large" target="_blank">
+                        Try 1 Month - $99
+                    </a>
+                </div>
+                <p style="margin-top: var(--spacing-sm); font-size: 0.9em; color: var(--color-text-muted);">
+                    ✅ One-time purchase • ✅ All set files included • ✅ Lifetime updates • ✅ Full support
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta">
+        <span class="text">Ready to start trading? Get GoldCruiseAI now:</span>
+        <a href="https://www.mql5.com/en/market/product/158880" class="btn btn-primary" target="_blank">Buy - $599</a>
+        <a href="https://www.mql5.com/en/market/product/158880?period=4" class="btn btn-secondary" target="_blank">Try - $99</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GoldCruiseAI</h3>
+                    <p>AI-Enhanced Gold Trading Expert Advisor</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/EridianLabs/GoldCruiseAI" target="_blank">GitHub</a>
+                        <a href="https://www.mql5.com/en/market/product/158880" target="_blank">MQL5</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="quick-start.html">Quick Start</a></li>
+                        <li><a href="demo-guide.html">Demo Guide</a></li>
+                        <li><a href="parameters.html">Parameters</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../setfiles/">Set Files</a></li>
+                        <li><a href="support.html">FAQ</a></li>
+                        <li><a href="../LICENSE">License</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Purchase</h4>
+                    <ul>
+                        <li><a href="https://www.mql5.com/en/market/product/158880" target="_blank">Buy on MQL5</a></li>
+                        <li><a href="https://www.mql5.com/en/market/product/158880?period=4" target="_blank">Rent Option</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EridianLabs. All rights reserved. | <a href="../LICENSE">License</a></p>
+                <p class="footer-warning">⚠️ Trading involves risk. Past performance does not guarantee future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
+
