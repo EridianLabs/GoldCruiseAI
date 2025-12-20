@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldCruiseAI - Demo Guide</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .page {
+            page-break-after: always;
+            padding: 0;
+        }
+        
+        .page:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #132e2c 0%, #1a5a58 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 4cm 2cm;
+        }
+        
+        .cover-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2cm;
+            background: rgba(184, 167, 105, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+        
+        .cover h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 0.5cm;
+            color: #b8a769;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .cover .subtitle {
+            font-size: 1.5em;
+            color: #e0e0e0;
+            margin-bottom: 1cm;
+        }
+        
+        .cover .version {
+            font-size: 1em;
+            color: #b8a769;
+            margin-top: 2cm;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #132e2c 0%, #1a5a58 100%);
+            color: #ffffff;
+            padding: 1.5cm 2cm;
+            margin-bottom: 1.5cm;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #b8a769;
+            margin-bottom: 0.3cm;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #e0e0e0;
+        }
+        
+        /* Content */
+        .content {
+            padding: 0 2cm;
+        }
+        
+        h2 {
+            color: #1a5a58;
+            font-size: 1.8em;
+            margin-top: 1.5cm;
+            margin-bottom: 0.8cm;
+            padding-bottom: 0.3cm;
+            border-bottom: 3px solid #b8a769;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            color: #2d7a78;
+            font-size: 1.4em;
+            margin-top: 1.2cm;
+            margin-bottom: 0.6cm;
+            page-break-after: avoid;
+        }
+        
+        h4 {
+            color: #1a5a58;
+            font-size: 1.1em;
+            margin-top: 0.8cm;
+            margin-bottom: 0.4cm;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 0.8cm;
+            text-align: justify;
+        }
+        
+        /* Metrics Box */
+        .metrics-box {
+            background: linear-gradient(135deg, rgba(26, 90, 88, 0.1) 0%, rgba(184, 167, 105, 0.1) 100%);
+            border: 2px solid #b8a769;
+            border-radius: 10px;
+            padding: 1cm;
+            margin: 1cm 0;
+            page-break-inside: avoid;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8cm;
+            margin-top: 0.5cm;
+        }
+        
+        .metric-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.6cm;
+            border-radius: 8px;
+            border-left: 4px solid #b8a769;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 0.2cm;
+        }
+        
+        .metric-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #1a5a58;
+        }
+        
+        /* Steps */
+        .steps {
+            counter-reset: step-counter;
+            margin: 1cm 0;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: 1cm;
+            padding-left: 2cm;
+            position: relative;
+            page-break-inside: avoid;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5cm;
+            height: 1.5cm;
+            background: #b8a769;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        
+        .step h4 {
+            margin-top: 0;
+            color: #1a5a58;
+        }
+        
+        /* Code/Command Boxes */
+        .code-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-left: 4px solid #b8a769;
+            padding: 0.8cm;
+            margin: 0.8cm 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            border-radius: 4px;
+            page-break-inside: avoid;
+        }
+        
+        /* Warning Box */
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-left: 6px solid #ffc107;
+            padding: 1cm;
+            margin: 1cm 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .warning-box h4 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: #d1ecf1;
+            border: 2px solid #0c5460;
+            border-left: 6px solid #0c5460;
+            padding: 1cm;
+            margin: 1cm 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-left: 1.5cm;
+            margin-bottom: 0.8cm;
+        }
+        
+        li {
+            margin-bottom: 0.4cm;
+        }
+        
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1cm 0;
+            page-break-inside: avoid;
+        }
+        
+        th {
+            background: #1a5a58;
+            color: #ffffff;
+            padding: 0.6cm;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 0.6cm;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 2cm;
+            padding-top: 1cm;
+            border-top: 2px solid #b8a769;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .page {
+                page-break-after: always;
+            }
+            
+            .page:last-child {
+                page-break-after: auto;
+            }
+            
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.3cm 0.6cm;
+            background: #b8a769;
+            color: #ffffff;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 0.2cm;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="page cover">
+        <div class="cover-logo">🏆</div>
+        <h1>GoldCruiseAI</h1>
+        <div class="subtitle">Demo & Quick Start Guide</div>
+        <div class="version">Version 1.0 | 2025</div>
+    </div>
+    
+    <!-- Page 1: Introduction -->
+    <div class="page">
+        <div class="header">
+            <h1>Welcome to GoldCruiseAI</h1>
+            <div class="subtitle">Professional Gold Trading Expert Advisor</div>
+        </div>
+        
+        <div class="content">
+            <h2>About This Guide</h2>
+            <p>This demo guide will walk you through setting up and using GoldCruiseAI, a professional Expert Advisor designed specifically for XAUUSD (Gold) trading. Whether you're a beginner or experienced trader, this guide will help you get started quickly.</p>
+            
+            <div class="metrics-box">
+                <h3 style="margin-top: 0; color: #1a5a58;">Key Performance Metrics</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label">Win Rate</div>
+                        <div class="metric-value">93.93%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Profit Factor</div>
+                        <div class="metric-value">5.60</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Max Drawdown</div>
+                        <div class="metric-value">0.68%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Sharpe Ratio</div>
+                        <div class="metric-value">65.94</div>
+                    </div>
+                </div>
+                <p style="margin-top: 0.8cm; font-size: 0.9em; color: #666; margin-bottom: 0;">
+                    <strong>Note:</strong> All metrics are from historical backtesting (2000-2025). Past performance does not guarantee future results.
+                </p>
+            </div>
+            
+            <h2>What You'll Learn</h2>
+            <ul>
+                <li>How to install GoldCruiseAI on MetaTrader 5</li>
+                <li>How to configure the EA with risk profiles</li>
+                <li>Understanding key parameters and settings</li>
+                <li>Best practices for demo and live trading</li>
+                <li>Troubleshooting common issues</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4>⚠️ Important Risk Warning</h4>
+                <p><strong>Trading involves substantial risk of loss.</strong> You may lose some or all of your invested capital. Past performance does not guarantee future results. Always test on a demo account first before trading with real money. Only trade with capital you can afford to lose.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 2: System Requirements -->
+    <div class="page">
+        <div class="header">
+            <h1>System Requirements</h1>
+            <div class="subtitle">What You Need to Get Started</div>
+        </div>
+        
+        <div class="content">
+            <h2>Required Software</h2>
+            <ul>
+                <li><strong>MetaTrader 5:</strong> Latest version (download from your broker or mt5.com)</li>
+                <li><strong>Windows/Mac/Linux:</strong> MT5 compatible operating system</li>
+                <li><strong>Internet Connection:</strong> For live trading (EA works offline for backtesting)</li>
+            </ul>
+            
+            <h2>Account Requirements</h2>
+            <table>
+                <tr>
+                    <th>Requirement</th>
+                    <th>Recommended</th>
+                    <th>Minimum</th>
+                </tr>
+                <tr>
+                    <td>Account Balance</td>
+                    <td>$1,000 - $5,000</td>
+                    <td>$500</td>
+                </tr>
+                <tr>
+                    <td>Leverage</td>
+                    <td>1:100</td>
+                    <td>1:50 or higher</td>
+                </tr>
+                <tr>
+                    <td>Account Type</td>
+                    <td>Standard, ECN</td>
+                    <td>Any</td>
+                </tr>
+                <tr>
+                    <td>Broker</td>
+                    <td>Any MT5 broker</td>
+                    <td>Any MT5 broker</td>
+                </tr>
+            </table>
+            
+            <h2>Trading Specifications</h2>
+            <div class="info-box">
+                <h4>📊 Trading Setup</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Symbol:</strong> XAUUSD (Gold)</li>
+                    <li><strong>Timeframe:</strong> M15 (15-minute charts)</li>
+                    <li><strong>Execution:</strong> Market orders</li>
+                    <li><strong>Positions:</strong> One position at a time</li>
+                    <li><strong>Sessions:</strong> London & New York (configurable)</li>
+                </ul>
+            </div>
+            
+            <h2>What's Included</h2>
+            <ul>
+                <li>GoldCruiseAI.ex5 (compiled Expert Advisor)</li>
+                <li>6 Risk Profile Set Files (.set files)</li>
+                <li>Quick Start Guide (this document)</li>
+                <li>Parameter Documentation</li>
+                <li>Performance Summary</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Page 3: Installation -->
+    <div class="page">
+        <div class="header">
+            <h1>Installation Guide</h1>
+            <div class="subtitle">Step-by-Step Setup Instructions</div>
+        </div>
+        
+        <div class="content">
+            <h2>Step 1: Download the EA</h2>
+            <div class="steps">
+                <div class="step">
+                    <h4>Purchase from MQL5 Marketplace</h4>
+                    <p>After purchasing GoldCruiseAI from the MQL5 Marketplace, the EA file will be automatically downloaded to your MT5 data folder.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Verify Installation</h4>
+                    <p>Open MetaTrader 5 and check the Navigator panel. You should see "GoldCruiseAI" under Expert Advisors.</p>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h4>💡 Alternative Manual Installation</h4>
+                <p>If you need to install manually:</p>
+                <ol>
+                    <li>Open MT5 → File → Open Data Folder</li>
+                    <li>Navigate to: <code>MQL5 → Experts</code></li>
+                    <li>Copy <code>GoldCruiseAI.ex5</code> to this folder</li>
+                    <li>Restart MT5</li>
+                </ol>
+            </div>
+            
+            <h2>Step 2: Attach EA to Chart</h2>
+            <div class="steps">
+                <div class="step">
+                    <h4>Open XAUUSD Chart</h4>
+                    <p>In MetaTrader 5, open a chart for XAUUSD (Gold). Right-click on the chart and select "Symbols" → search for "XAUUSD" → double-click to add.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Set Timeframe to M15</h4>
+                    <p>Change the chart timeframe to M15 (15 minutes). You can do this by clicking the M15 button in the toolbar or pressing Alt+3.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Drag EA to Chart</h4>
+                    <p>From the Navigator panel, drag "GoldCruiseAI" onto your XAUUSD M15 chart. The EA input window will open automatically.</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Important</h4>
+                <p>GoldCruiseAI is optimized specifically for XAUUSD on M15 timeframe. While it may work on other symbols/timeframes, optimal performance is achieved with the recommended settings.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 4: Configuration -->
+    <div class="page">
+        <div class="header">
+            <h1>Configuration</h1>
+            <div class="subtitle">Setting Up Your Risk Profile</div>
+        </div>
+        
+        <div class="content">
+            <h2>Step 3: Load Risk Profile</h2>
+            <div class="steps">
+                <div class="step">
+                    <h4>Open EA Inputs</h4>
+                    <p>Right-click on the EA icon in the top-right corner of your chart → select "Properties" (or double-click the EA icon).</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Load Set File</h4>
+                    <p>In the Inputs tab, click the "Load" button. Navigate to your set files folder and select your preferred risk profile:</p>
+                    <ul>
+                        <li><strong>Conservative.set</strong> - 0.5% risk, fixed 0.01 lot</li>
+                        <li><strong>Moderate.set</strong> - 1.0% risk, adaptive sizing (recommended)</li>
+                        <li><strong>Aggressive.set</strong> - 2.0% risk, higher returns</li>
+                        <li><strong>FixedLot_0.01.set</strong> - Fixed lot size for small accounts</li>
+                        <li><strong>MaxProfit_2Percent.set</strong> - 2% risk variant</li>
+                        <li><strong>MaxProfit_3Percent.set</strong> - 3% risk variant</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h4>Verify Settings</h4>
+                    <p>Review all parameters to ensure they match your risk tolerance. Key settings to check:</p>
+                    <ul>
+                        <li>Risk per trade percentage</li>
+                        <li>Maximum daily drawdown limit</li>
+                        <li>Maximum trades per day</li>
+                        <li>Stop loss and take profit multipliers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2>Risk Profile Selection Guide</h2>
+            <table>
+                <tr>
+                    <th>Profile</th>
+                    <th>Risk/Trade</th>
+                    <th>Best For</th>
+                    <th>Account Size</th>
+                </tr>
+                <tr>
+                    <td><strong>Conservative</strong></td>
+                    <td>0.5%</td>
+                    <td>Beginners, risk-averse</td>
+                    <td>$500 - $2,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Moderate</strong></td>
+                    <td>1.0%</td>
+                    <td>Most traders</td>
+                    <td>$1,000 - $5,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Aggressive</strong></td>
+                    <td>2.0%</td>
+                    <td>Experienced traders</td>
+                    <td>$5,000+</td>
+                </tr>
+                <tr>
+                    <td><strong>Fixed Lot</strong></td>
+                    <td>~0.03-0.05%</td>
+                    <td>Small accounts</td>
+                    <td>$1,000</td>
+                </tr>
+            </table>
+            
+            <div class="info-box">
+                <h4>💡 Recommendation</h4>
+                <p>Start with the <strong>Moderate</strong> profile if you have a $1,000-$5,000 account. It provides a good balance of risk and reward. Always test on a demo account first!</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 5: Key Parameters -->
+    <div class="page">
+        <div class="header">
+            <h1>Key Parameters</h1>
+            <div class="subtitle">Understanding Important Settings</div>
+        </div>
+        
+        <div class="content">
+            <h2>Risk Management Parameters</h2>
+            
+            <h3>Risk Per Trade</h3>
+            <p><strong>Default:</strong> 1.0% (Moderate profile)</p>
+            <p>Percentage of account balance risked per trade. Lower values = lower risk, higher values = higher risk.</p>
+            <ul>
+                <li>0.5% = Conservative</li>
+                <li>1.0% = Moderate (recommended)</li>
+                <li>2.0% = Aggressive</li>
+            </ul>
+            
+            <h3>Maximum Daily Drawdown</h3>
+            <p><strong>Default:</strong> 5.0%</p>
+            <p>EA will stop trading if daily drawdown exceeds this limit. Helps protect your account from excessive losses.</p>
+            
+            <h3>Maximum Trades Per Day</h3>
+            <p><strong>Default:</strong> 10</p>
+            <p>Limits the number of trades the EA can open per day. Prevents overtrading and helps manage risk.</p>
+            
+            <h2>Trading Parameters</h2>
+            
+            <h3>Confidence Thresholds</h3>
+            <p><strong>Buy Confidence:</strong> 0.50 (default)</p>
+            <p><strong>Sell Confidence:</strong> 0.30 (default)</p>
+            <p>Minimum confidence score required to enter a trade. Higher values = fewer but higher quality trades.</p>
+            
+            <h3>Stop Loss & Take Profit Multipliers</h3>
+            <p><strong>SL Multiplier:</strong> 2.0 (default)</p>
+            <p><strong>TP Multiplier:</strong> 4.0 (default)</p>
+            <p>Multipliers based on ATR (Average True Range). SL = 2x ATR, TP = 4x ATR. This ensures stops and targets adapt to market volatility.</p>
+            
+            <h2>Session Filtering</h2>
+            <p>The EA can be configured to trade only during specific sessions:</p>
+            <ul>
+                <li><strong>London Session:</strong> 08:00 - 16:00 GMT</li>
+                <li><strong>New York Session:</strong> 13:00 - 21:00 GMT</li>
+                <li><strong>Asian Session:</strong> Optional (usually avoided)</li>
+            </ul>
+            
+            <div class="info-box">
+                <h4>💡 Pro Tip</h4>
+                <p>Session filtering helps avoid low-liquidity periods and can improve execution quality. The default settings optimize for London and New York sessions.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 6: Activation & Testing -->
+    <div class="page">
+        <div class="header">
+            <h1>Activation & Testing</h1>
+            <div class="subtitle">Starting Your First Trades</div>
+        </div>
+        
+        <div class="content">
+            <h2>Step 4: Enable AutoTrading</h2>
+            <div class="steps">
+                <div class="step">
+                    <h4>Check AutoTrading Button</h4>
+                    <p>In MetaTrader 5 toolbar, ensure the "AutoTrading" button is enabled (green). If it's gray, click it to enable.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Verify EA Status</h4>
+                    <p>Check the EA icon in the top-right corner of your chart. It should show a smiley face (😊) when active. If it shows a sad face (☹), check the Experts tab for error messages.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Monitor First Trades</h4>
+                    <p>The EA will automatically analyze the market and enter trades when conditions are met. Monitor the first few trades to ensure everything is working correctly.</p>
+                </div>
+            </div>
+            
+            <h2>Demo Account Testing</h2>
+            <div class="warning-box">
+                <h4>⚠️ Always Test on Demo First</h4>
+                <p><strong>Before trading with real money, test GoldCruiseAI on a demo account for at least 2-4 weeks.</strong> This allows you to:</p>
+                <ul>
+                    <li>Understand how the EA works</li>
+                    <li>Verify it works with your broker</li>
+                    <li>Test different risk profiles</li>
+                    <li>Build confidence in the system</li>
+                </ul>
+            </div>
+            
+            <h2>What to Monitor</h2>
+            <ul>
+                <li><strong>Trade Execution:</strong> Are trades opening/closing correctly?</li>
+                <li><strong>Stop Loss & Take Profit:</strong> Are SL/TP levels appropriate?</li>
+                <li><strong>Risk Management:</strong> Is position sizing correct?</li>
+                <li><strong>Session Filtering:</strong> Is the EA respecting session times?</li>
+                <li><strong>Daily Limits:</strong> Is max trades per day working?</li>
+            </ul>
+            
+            <h2>Common Issues & Solutions</h2>
+            
+            <h3>EA Not Trading</h3>
+            <ul>
+                <li>Check AutoTrading is enabled</li>
+                <li>Verify you're on XAUUSD M15 chart</li>
+                <li>Check if daily drawdown limit reached</li>
+                <li>Verify max trades per day not exceeded</li>
+                <li>Check if market is within trading sessions</li>
+            </ul>
+            
+            <h3>EA Shows Errors</h3>
+            <ul>
+                <li>Check Experts tab for error messages</li>
+                <li>Verify account has sufficient margin</li>
+                <li>Check broker allows automated trading</li>
+                <li>Ensure MT5 is up to date</li>
+            </ul>
+            
+            <div class="info-box">
+                <h4>💡 Getting Help</h4>
+                <p>If you encounter issues, check the support thread on MQL5 or contact support. Most issues are configuration-related and easily resolved.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 7: Best Practices -->
+    <div class="page">
+        <div class="header">
+            <h1>Best Practices</h1>
+            <div class="subtitle">Maximizing Your Success</div>
+        </div>
+        
+        <div class="content">
+            <h2>Risk Management</h2>
+            <ul>
+                <li><strong>Start Small:</strong> Begin with conservative risk settings</li>
+                <li><strong>Never Risk More Than You Can Afford:</strong> Only trade with disposable capital</li>
+                <li><strong>Use Stop Losses:</strong> Always have SL/TP configured (EA does this automatically)</li>
+                <li><strong>Monitor Daily:</strong> Check your account regularly, especially in first weeks</li>
+                <li><strong>Respect Drawdown Limits:</strong> Don't disable max drawdown protection</li>
+            </ul>
+            
+            <h2>Account Management</h2>
+            <ul>
+                <li><strong>Appropriate Account Size:</strong> Minimum $500, recommended $1,000+</li>
+                <li><strong>Broker Selection:</strong> Choose a reputable broker with tight spreads on XAUUSD</li>
+                <li><strong>VPS Consideration:</strong> For 24/7 trading, consider a VPS (Virtual Private Server)</li>
+                <li><strong>Regular Backups:</strong> Save your set files and configurations</li>
+            </ul>
+            
+            <h2>Trading Tips</h2>
+            <ul>
+                <li><strong>Patience:</strong> The EA is selective - it may not trade every day</li>
+                <li><strong>Don't Interfere:</strong> Let the EA work - avoid manual intervention</li>
+                <li><strong>Review Performance:</strong> Weekly/monthly reviews help optimize settings</li>
+                <li><strong>Stay Updated:</strong> Check for EA updates and improvements</li>
+            </ul>
+            
+            <h2>What NOT to Do</h2>
+            <div class="warning-box">
+                <h4>❌ Common Mistakes</h4>
+                <ul>
+                    <li>Don't disable risk management features</li>
+                    <li>Don't change settings during losing streaks</li>
+                    <li>Don't run multiple instances on same account</li>
+                    <li>Don't use on multiple symbols simultaneously</li>
+                    <li>Don't ignore the daily drawdown limit</li>
+                </ul>
+            </div>
+            
+            <h2>Performance Expectations</h2>
+            <p>Based on historical backtesting (2000-2025):</p>
+            <ul>
+                <li><strong>Win Rate:</strong> ~94% (varies with market conditions)</li>
+                <li><strong>Average Trades:</strong> ~2-3 trades per week</li>
+                <li><strong>Drawdown:</strong> Typically under 1% (with proper risk settings)</li>
+                <li><strong>Profit Factor:</strong> ~5.60 (historical average)</li>
+            </ul>
+            
+            <div class="info-box">
+                <h4>💡 Remember</h4>
+                <p><strong>Past performance does not guarantee future results.</strong> Actual trading results will vary based on market conditions, broker execution, spreads, and your risk settings. Always trade responsibly.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 8: Support & Resources -->
+    <div class="page">
+        <div class="header">
+            <h1>Support & Resources</h1>
+            <div class="subtitle">Getting Help When You Need It</div>
+        </div>
+        
+        <div class="content">
+            <h2>Documentation</h2>
+            <ul>
+                <li><strong>Quick Start Guide:</strong> This document</li>
+                <li><strong>Parameter Guide:</strong> Detailed explanation of all settings</li>
+                <li><strong>Performance Summary:</strong> Historical backtest results</li>
+                <li><strong>Set Files:</strong> Pre-configured risk profiles</li>
+            </ul>
+            
+            <h2>Support Channels</h2>
+            <div class="info-box">
+                <h4>📞 How to Get Help</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>MQL5 Support Thread:</strong> Post questions in the official support thread</li>
+                    <li><strong>MQL5 Product Page:</strong> Check for updates and announcements</li>
+                    <li><strong>Email Support:</strong> Contact through MQL5 messaging system</li>
+                    <li><strong>Documentation:</strong> Review parameter guide for detailed settings</li>
+                </ul>
+            </div>
+            
+            <h2>Useful Links</h2>
+            <ul>
+                <li><strong>MQL5 Product Page:</strong> https://www.mql5.com/en/market/product/158880</li>
+                <li><strong>Support Thread:</strong> [Link to your support thread]</li>
+                <li><strong>GitHub Documentation:</strong> https://eridianlabs.github.io/GoldCruiseAI/</li>
+                <li><strong>Set Files Download:</strong> Available on product page resources</li>
+            </ul>
+            
+            <h2>FAQ - Frequently Asked Questions</h2>
+            
+            <h3>Q: Can I use this EA on other symbols?</h3>
+            <p><strong>A:</strong> GoldCruiseAI is optimized specifically for XAUUSD (Gold). While it may work on other symbols, optimal performance is achieved with XAUUSD M15.</p>
+            
+            <h3>Q: Do I need a VPS?</h3>
+            <p><strong>A:</strong> A VPS is recommended for 24/7 trading, but not required if your computer stays on during trading hours.</p>
+            
+            <h3>Q: Can I modify the risk settings?</h3>
+            <p><strong>A:</strong> Yes, all parameters are adjustable. However, we recommend starting with the provided set files.</p>
+            
+            <h3>Q: What if the EA stops trading?</h3>
+            <p><strong>A:</strong> Check if daily drawdown limit or max trades per day was reached. These are safety features.</p>
+            
+            <h3>Q: How often should I check my account?</h3>
+            <p><strong>A:</strong> Daily checks are recommended, especially in the first few weeks. Once stable, weekly checks are sufficient.</p>
+            
+            <div class="footer">
+                <p><strong>GoldCruiseAI Demo Guide</strong> | Version 1.0 | © 2025 EridianLabs</p>
+                <p>Trading involves risk. Past performance does not guarantee future results.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
